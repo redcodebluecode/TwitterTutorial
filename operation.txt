@@ -1,0 +1,2 @@
+1. pip install twitter
+2. python twitter_streaming.py > twitter_stream_1000tweets.txt
