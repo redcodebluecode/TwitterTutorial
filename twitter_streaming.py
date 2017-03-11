@@ -9,13 +9,9 @@ except ImportError:
 # Import the necessary methods from "twitter" library
 from twitter import Twitter, OAuth, TwitterHTTPError, TwitterStream
 
-# Variables that contains the user credentials to access Twitter API 
-ACCESS_TOKEN = 'YOUR ACCESS TOKEN"'
-ACCESS_SECRET = 'YOUR ACCESS TOKEN SECRET'
-CONSUMER_KEY = 'YOUR API KEY'
-CONSUMER_SECRET = 'ENTER YOUR API SECRET'
-
-oauth = OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
+# Credentials
+from credentials import *
+oauth = OAuth(access_token, access_token_secret, consumer_key, consumer_secret)
 
 # Initiate the connection to Twitter Streaming API
 twitter_stream = TwitterStream(auth=oauth)
@@ -33,7 +29,7 @@ for tweet in iterator:
     # Twitter Python Tool wraps the data returned by Twitter 
     # as a TwitterDictResponse object.
     # We convert it back to the JSON format to print/score
-    print json.dumps(tweet)  
+    print json.dumps(tweet, indent=4)  
     
     # The command below will do pretty printing for JSON data, try it out
     # print json.dumps(tweet, indent=4)
